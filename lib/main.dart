@@ -58,7 +58,10 @@ class _PuzzlPageState extends State<PuzzlPage> {
             Container(
               width: size ?? 0,
               height: size ?? 0,
-              color: Colors.yellow,
+              decoration: BoxDecoration(
+                border: Border.all(width: 2),
+                color: Colors.orange,
+              ),
               child: Stack(
                 children: _getChildren(),
               ),
@@ -84,6 +87,7 @@ class _PuzzlPageState extends State<PuzzlPage> {
               alignment:
                   _calculateAlignmentForIndex(numbers.indexOf(numberInt)),
               child: Number(
+                key: ValueKey<int>(numberInt),
                 onTap: () => _onNumberTaped(numberInt),
                 number: numberInt,
                 size: size / 3,
@@ -158,8 +162,8 @@ class Number extends StatelessWidget {
         width: size,
         height: size,
         decoration: BoxDecoration(
-            border: Border.all(),
-            color: is9 ? Colors.orange : Colors.transparent),
+            border: is9 ? null : Border.all(),
+            color: is9 ? Colors.transparent : Colors.yellow),
         child: is9
             ? Container()
             : Center(
